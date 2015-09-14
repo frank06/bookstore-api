@@ -3,13 +3,13 @@
 one:
   title: MyString
   price: 9.99
-  author: 
-  publisher: 
+  author_id: 
+  publisher_id: 
   publisher_type: Publisher
 
 two:
   title: MyString
   price: 9.99
-  author: 
-  publisher: 
+  author_id: 
+  publisher_id: 
   publisher_type: Publisher

@@ -8,31 +8,42 @@ class PublishingHousesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+    assert_not_nil assigns(:publishing_houses)
+  end
+
+  test "should get new" do
+    get :new
+    assert_response :success
   end
 
   test "should create publishing_house" do
     assert_difference('PublishingHouse.count') do
-      post :create, params: { publishing_house: { discount: @publishing_house.discount, name: @publishing_house.name } }
+      post :create, publishing_house: { discount: @publishing_house.discount, name: @publishing_house.name }
     end
 
-    assert_response 201
+    assert_redirected_to publishing_house_path(assigns(:publishing_house))
   end
 
   test "should show publishing_house" do
-    get :show, params: { id: @publishing_house }
+    get :show, id: @publishing_house
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @publishing_house
     assert_response :success
   end
 
   test "should update publishing_house" do
-    patch :update, params: { id: @publishing_house, publishing_house: { discount: @publishing_house.discount, name: @publishing_house.name } }
-    assert_response 200
+    patch :update, id: @publishing_house, publishing_house: { discount: @publishing_house.discount, name: @publishing_house.name }
+    assert_redirected_to publishing_house_path(assigns(:publishing_house))
   end
 
   test "should destroy publishing_house" do
     assert_difference('PublishingHouse.count', -1) do
-      delete :destroy, params: { id: @publishing_house }
+      delete :destroy, id: @publishing_house
     end
 
-    assert_response 204
+    assert_redirected_to publishing_houses_path
   end
 end
