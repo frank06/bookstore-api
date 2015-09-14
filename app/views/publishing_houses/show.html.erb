@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @publishing_house.name %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @publishing_house.discount %>
+</p>
+
+<%= link_to 'Edit', edit_publishing_house_path(@publishing_house) %> |
+<%= link_to 'Back', publishing_houses_path %>

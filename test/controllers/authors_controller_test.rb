@@ -8,31 +8,42 @@ class AuthorsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
+    assert_not_nil assigns(:authors)
+  end
+
+  test "should get new" do
+    get :new
+    assert_response :success
   end
 
   test "should create author" do
     assert_difference('Author.count') do
-      post :create, params: { author: { name: @author.name } }
+      post :create, author: { name: @author.name }
     end
 
-    assert_response 201
+    assert_redirected_to author_path(assigns(:author))
   end
 
   test "should show author" do
-    get :show, params: { id: @author }
+    get :show, id: @author
+    assert_response :success
+  end
+
+  test "should get edit" do
+    get :edit, id: @author
     assert_response :success
   end
 
   test "should update author" do
-    patch :update, params: { id: @author, author: { name: @author.name } }
-    assert_response 200
+    patch :update, id: @author, author: { name: @author.name }
+    assert_redirected_to author_path(assigns(:author))
   end
 
   test "should destroy author" do
     assert_difference('Author.count', -1) do
-      delete :destroy, params: { id: @author }
+      delete :destroy, id: @author
     end
 
-    assert_response 204
+    assert_redirected_to authors_path
   end
 end
