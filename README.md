@@ -1,9 +1,24 @@
-## bookstore-api
+# README
 
-This repo is the API code of [Building a modern bridge between Ember and Rails 5 with JSON API](http://emberigniter.com/modern-bridge-ember-and-rails-5-with-json-api/).
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Run with `bin/rails server`.
+Things you may want to cover:
 
-Please refer to the article for more information.
+* Ruby version
 
-MIT licensed.
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
