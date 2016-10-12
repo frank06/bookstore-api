@@ -3,14 +3,13 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.all
-
-    render json: @books
+    @books = Book.limit(params[:limit])
+    render jsonapi: @books, meta: { total: Book.count }
   end
 
   # GET /books/1
   def show
-    render json: @book
+    render jsonapi: @book
   end
 
   # POST /books
@@ -18,18 +17,18 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      render json: @book, status: :created, location: @book
+      render jsonapi: @book, status: :created, location: @book
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render jsonapi: @book.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      render json: @book
+      render jsonapi: @book
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render jsonapi: @book.errors, status: :unprocessable_entity
     end
   end
 
@@ -49,6 +48,5 @@ class BooksController < ApplicationController
       res = ActiveModelSerializers::Deserialization.jsonapi_parse(params, polymorphic: [:publisher])
       res[:publisher_type] = res[:publisher_type].singularize.capitalize
       res
-      # params.require(:book).permit(:title, :price, :author_id, :publisher_id, :publisher_type)
     end
 end
