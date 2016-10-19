@@ -5,12 +5,12 @@ class PublishingHousesController < ApplicationController
   def index
     @publishing_houses = PublishingHouse.all
 
-    render jsonapi: @publishing_houses
+    render json: @publishing_houses
   end
 
   # GET /publishing_houses/1
   def show
-    render jsonapi: @publishing_house
+    render json: @publishing_house
   end
 
   # POST /publishing_houses
@@ -18,18 +18,18 @@ class PublishingHousesController < ApplicationController
     @publishing_house = PublishingHouse.new(publishing_house_params)
 
     if @publishing_house.save
-      render jsonapi: @publishing_house, status: :created, location: @publishing_house
+      render json: @publishing_house, status: :created, location: @publishing_house
     else
-      render jsonapi: @publishing_house.errors, status: :unprocessable_entity
+      render json: @publishing_house.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /publishing_houses/1
   def update
     if @publishing_house.update(publishing_house_params)
-      render jsonapi: @publishing_house
+      render json: @publishing_house
     else
-      render jsonapi: @publishing_house.errors, status: :unprocessable_entity
+      render json: @publishing_house.errors, status: :unprocessable_entity
     end
   end
 

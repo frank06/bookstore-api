@@ -4,12 +4,12 @@ class BooksController < ApplicationController
   # GET /books
   def index
     @books = Book.limit(params[:limit])
-    render jsonapi: @books, meta: { total: Book.count }
+    render json: @books, meta: { total: Book.count }
   end
 
   # GET /books/1
   def show
-    render jsonapi: @book
+    render json: @book
   end
 
   # POST /books
@@ -17,18 +17,18 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      render jsonapi: @book, status: :created, location: @book
+      render json: @book, status: :created, location: @book
     else
-      render jsonapi: @book.errors, status: :unprocessable_entity
+      render json: @book.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      render jsonapi: @book
+      render json: @book
     else
-      render jsonapi: @book.errors, status: :unprocessable_entity
+      render json: @book.errors, status: :unprocessable_entity
     end
   end
 

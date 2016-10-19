@@ -5,12 +5,12 @@ class AuthorsController < ApplicationController
   def index
     @authors = Author.all
 
-    render jsonapi: @authors
+    render json: @authors
   end
 
   # GET /authors/1
   def show
-    render jsonapi: @author, include: ['books']
+    render json: @author, include: ['books']
   end
 
   # POST /authors
@@ -18,18 +18,18 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
 
     if @author.save
-      render jsonapi: @author, status: :created, location: @author
+      render json: @author, status: :created, location: @author
     else
-      render jsonapi: @author.errors, status: :unprocessable_entity
+      render json: @author.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /authors/1
   def update
     if @author.update(author_params)
-      render jsonapi: @author
+      render json: @author
     else
-      render jsonapi: @author.errors, status: :unprocessable_entity
+      render json: @author.errors, status: :unprocessable_entity
     end
   end
 
